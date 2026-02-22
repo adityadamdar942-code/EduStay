@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/llmain"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#EAF6FC"
+    android:gravity="center">
+    <ImageView
+        android:id="@+id/imagemain"
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:src="@drawable/edustay_logo" />
+
+    <TextView
+        android:id="@+id/tvmain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/handlee"
+        android:gravity="center"
+        android:text="EduStay"
+        android:textColor="#2C7FB8"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+</LinearLayout>

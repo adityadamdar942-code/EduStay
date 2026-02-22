@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/hostel_home"
+        android:title="Home"
+        android:icon="@drawable/ic_home" />
+
+    <item
+        android:id="@+id/hostel_room"
+        android:title="Room Info"
+        android:icon="@drawable/ic_room" />
+
+    <item
+        android:id="@+id/hostel_complaint"
+        android:title="Complaints"
+        android:icon="@drawable/ic_complaint" />
+
+    <item
+        android:id="@+id/hostel_profile"
+        android:title="Profile"
+        android:icon="@drawable/user" />
+</menu>

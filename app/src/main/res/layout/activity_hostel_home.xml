@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Hostel_module.Hostel_Home_Activity"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true"
+    android:weightSum="100">
+
+    <!-- Dynamic content here -->
+    <FrameLayout
+        android:id="@+id/Hostel_home_framelayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="92" />
+
+    <!-- Bottom Navigation -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/Hostel_home_BottomNavigationView"
+        android:layout_marginTop="9dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10"
+        android:background="#C6DBEF"
+        app:itemTextColor="@color/dark_blue"
+        app:itemRippleColor="@color/medium_blue"
+        app:labelVisibilityMode="selected"
+        app:menu="@menu/hostel_bottom_nav_menu"/>
+
+
+
+
+</LinearLayout>

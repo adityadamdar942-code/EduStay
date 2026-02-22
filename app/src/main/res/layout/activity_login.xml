@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/llLogin"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="24dp"
+    android:background="@drawable/login_or_signup_screen">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="100dp"
+        android:layout_marginLeft="10sp"
+        >
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Login"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textColor="@color/dark_blue"
+            android:textSize="26sp"
+            android:layout_marginTop="12dp"
+            android:layout_marginLeft="30dp"
+            />
+
+        <TextView
+            android:id="@+id/tvLoginNewUser"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Register"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textColor="@color/light_blue"
+            android:textSize="16sp"
+            android:layout_marginTop="12dp"
+            android:layout_marginLeft="10dp"/>
+
+
+
+    </LinearLayout>
+    <!-- Email -->
+    <EditText
+        android:id="@+id/etLoginUserName"
+        android:layout_width="380dp"
+        android:layout_height="wrap_content"
+        android:hint=" Name"
+        android:inputType="textEmailAddress"
+        android:textSize="20dp"
+        android:layout_marginTop="30dp"
+        android:padding="10dp"
+        android:background="@drawable/et_bg_shape"
+        android:drawableLeft="@drawable/user"
+        android:drawableTint="#98AFC7"
+        />
+
+    <!-- Password -->
+    <EditText
+        android:id="@+id/etLoginPassword"
+        android:layout_width="380dp"
+        android:layout_height="wrap_content"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:textSize="20sp"
+        android:layout_marginTop="12dp"
+        android:padding="10dp"
+        android:background="@drawable/et_bg_shape"
+        android:drawableLeft="@drawable/lock"
+        android:drawableTint="#98AFC7"
+        />
+
+    <!-- Login Button -->
+    <CheckBox
+        android:id="@+id/cbLoginShowHidePassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="1sp"
+        android:layout_marginTop="5dp"
+        android:text="Show Password"
+        android:textColor="#610A0A" />
+
+    <Button
+        android:id="@+id/btnLoginLogin"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:text="Login"
+        android:backgroundTint="@color/dark_blue"
+        android:textColor="#FFFFFF"
+        android:layout_marginTop="16dp" />
+
+
+
+</LinearLayout>
