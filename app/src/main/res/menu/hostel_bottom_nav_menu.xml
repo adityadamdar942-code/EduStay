@@ -18,5 +18,5 @@
     <item
         android:id="@+id/hostel_profile"
         android:title="Profile"
-        android:icon="@drawable/user" />
+        android:icon="@drawable/icon_user" />
 </menu>

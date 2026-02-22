@@ -57,7 +57,7 @@
         android:layout_marginTop="30dp"
         android:padding="10dp"
         android:background="@drawable/et_bg_shape"
-        android:drawableLeft="@drawable/user"
+        android:drawableLeft="@drawable/icon_user"
         android:drawableTint="#98AFC7"
         />
 
@@ -72,7 +72,7 @@
         android:layout_marginTop="12dp"
         android:padding="10dp"
         android:background="@drawable/et_bg_shape"
-        android:drawableLeft="@drawable/lock"
+        android:drawableLeft="@drawable/icon_lock"
         android:drawableTint="#98AFC7"
         />
 

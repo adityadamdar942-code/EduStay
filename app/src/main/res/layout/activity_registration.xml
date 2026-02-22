@@ -58,7 +58,7 @@
         android:layout_marginTop="30dp"
         android:padding="10dp"
         android:background="@drawable/et_bg_shape"
-        android:drawableLeft="@drawable/user"
+        android:drawableLeft="@drawable/icon_user"
         android:drawableTint="#98AFC7"
         />
     <EditText
@@ -71,7 +71,7 @@
         android:layout_marginTop="12dp"
         android:padding="10dp"
         android:background="@drawable/et_bg_shape"
-        android:drawableLeft="@drawable/number"
+        android:drawableLeft="@drawable/icon_number"
         android:drawableTint="#98AFC7"
         />
 
@@ -85,7 +85,7 @@
         android:layout_marginTop="12dp"
         android:padding="10dp"
         android:background="@drawable/et_bg_shape"
-        android:drawableLeft="@drawable/email"
+        android:drawableLeft="@drawable/icon_email"
         android:drawableTint="#98AFC7"
         />
     <!-- Password -->
@@ -99,7 +99,7 @@
         android:layout_marginTop="12dp"
         android:padding="10dp"
         android:background="@drawable/et_bg_shape"
-        android:drawableLeft="@drawable/lock"
+        android:drawableLeft="@drawable/icon_lock"
         android:drawableTint="#98AFC7"
         />
 
