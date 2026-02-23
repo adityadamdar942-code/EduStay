@@ -119,7 +119,7 @@ public class RegistrationActivity extends AppCompatActivity {
         params.put("password",etRegistrationPassword.getText().toString());
 
 
-        client.post("http://10.144.246.239:80/EduStayAPI/registerUser.php",params,new JsonHttpResponseHandler() {
+        client.post(Urls.urlRegisterUser,params,new JsonHttpResponseHandler() {
 
 
                     @Override
