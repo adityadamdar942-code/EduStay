@@ -1,15 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Hostel_module.Hostel_Fragment.Complaints_hostel_Fragment"
-    android:background="@color/black">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    android:background="@color/light_light_blue">
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="16sp"
+        android:background="@color/light_light_blue">
 
-</FrameLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Complaint"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="24sp"
+            android:fontFamily="sans-serif"
+            android:gravity="center"
+            android:layout_marginTop="20sp"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50sp"
+            android:id="@+id/etComplaintSubject"
+            android:hint="Enter Subject"
+            android:textColorHint="@color/black"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="normal"
+            android:fontFamily="sans-serif"
+            android:paddingLeft="10sp"
+            android:inputType="textEmailSubject"
+            android:layout_marginTop="80sp"
+            android:background="@drawable/bg_stroke_blue"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="150sp"
+            android:id="@+id/etComplaintEmailMessage"
+            android:hint="Enter Message"
+            android:textColorHint="@color/black"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="normal"
+            android:fontFamily="sans-serif"
+            android:paddingLeft="10sp"
+            android:inputType="textMultiLine"
+            android:layout_marginTop="20sp"
+            android:background="@drawable/bg_stroke_blue"
+            android:gravity="top"/>
+
+        <Button
+            android:id="@+id/btnComplaintComplaint"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:text="Complaint"
+            android:backgroundTint="@color/medium_blue"
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="16dp"
+            android:layout_gravity="center"/>
+    </LinearLayout>
+</ScrollView>
