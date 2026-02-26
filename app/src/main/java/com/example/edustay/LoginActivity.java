@@ -35,7 +35,7 @@ public class LoginActivity extends AppCompatActivity {
     Button btnLoginLogo;
     TextView tvLoginNewUser;
     ProgressDialog progressDialog;
-   
+
     SharedPreferences preferences; //store temp data//database
     SharedPreferences.Editor editor;//put or edit data of SharedPrefernces
 
@@ -43,7 +43,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        preferences= PreferenceManager.getDefaultSharedPreferences(LoginActivity.this);
+        preferences= PreferenceManager.getDefaultSharedPreferences(this);
         editor=preferences.edit();
         if (preferences.getBoolean("islogin",false))
         {
@@ -94,7 +94,7 @@ public class LoginActivity extends AppCompatActivity {
                    progressDialog.setMessage("please wait");
                    progressDialog.show();
                    loginUser();
-                   
+
                 }
             }
         });
@@ -105,7 +105,7 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        
+
     }
 
     private void loginUser() {
@@ -136,6 +136,7 @@ public class LoginActivity extends AppCompatActivity {
                               progressDialog.dismiss();
                               Toast.makeText(LoginActivity.this, "Login Successfully Done", Toast.LENGTH_SHORT).show();
                               Intent intent = new Intent(LoginActivity.this, ModuleActivity.class);
+                              editor.putString("name",etLoginUsername.getText().toString()).commit();
                               editor.putBoolean("islogin",true).commit();
                               startActivity(intent);
                               finish();

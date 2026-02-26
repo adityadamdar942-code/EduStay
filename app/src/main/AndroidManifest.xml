@@ -15,6 +15,21 @@
         android:theme="@style/Theme.EduStay"
         tools:targetApi="31">
         <activity
+            android:name=".Comman.Help_center_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".Comman.Theme_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".Comman.About_Us_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".Comman.Password_Security_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".Comman.Manager_Profile_Activity"
+            android:exported="false" />
+        <activity
             android:name=".Library_module.Library_Home_Activity"
             android:exported="false" />
         <activity
