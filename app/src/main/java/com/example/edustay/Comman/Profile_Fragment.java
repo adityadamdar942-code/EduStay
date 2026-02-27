@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.edustay.R;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -82,15 +83,26 @@ public class Profile_Fragment extends Fragment {
                                 JSONObject jsonObject = jsonArray.getJSONObject(i);
 
                                 String strId = jsonObject.getString("id");
+                                String strimage =jsonObject.getString("image");
                                 String strName =jsonObject.getString("name");
                                 String strMobileno = jsonObject.getString("mobileno");
                                 String strEmailid = jsonObject.getString("emailid");
                                 String strPassword =jsonObject.getString("password");
 
 
-                                //display a name and email
+                                //display a  name and email
                                 tvProfileName.setText(strName);
                                 tvProfileEmail.setText(strEmailid);
+
+
+                                //profile pic
+                                Glide.with(getContext())
+                                        .load("http://172.30.87.239:80/EduStayAPI/images/"+strimage)
+                                        .skipMemoryCache(true)
+                                        .error(R.drawable.image_not_found)
+                                        .into(ivProfileImage);
+
+
 
                             }
                         } catch (JSONException e) {
