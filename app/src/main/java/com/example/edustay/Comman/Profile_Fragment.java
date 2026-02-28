@@ -1,5 +1,6 @@
 package com.example.edustay.Comman;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -55,6 +56,48 @@ public class Profile_Fragment extends Fragment {
        cvProfileHelp =view.findViewById(R.id.cvProfileHelp);
 
        getMyProfile();
+
+
+
+
+
+       //intent
+       cvProfileManageProf.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               Intent intent =new Intent(getContext(), Manager_Profile_Activity.class);
+               startActivity(intent);
+           }
+       });
+
+       cvProfilePassword.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               Intent intent =new Intent(getContext(), Password_Security_Activity.class);
+               startActivity(intent);
+           }
+       });
+       cvProfileAboutUs.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               Intent intent =new Intent(getContext(), About_Us_Activity.class);
+               startActivity(intent);
+           }
+       });
+       cvProfileTheme.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               Intent intent =new Intent(getContext(), Theme_Activity.class);
+               startActivity(intent);
+           }
+       });
+       cvProfileHelp.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               Intent intent =new Intent(getContext(), Help_center_Activity.class);
+               startActivity(intent);
+           }
+       });
 
 
 
