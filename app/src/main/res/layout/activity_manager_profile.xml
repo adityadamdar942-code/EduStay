@@ -1,10 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".Comman.Manager_Profile_Activity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/llManage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:background="@color/light_light_blue">
+
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Manage Profile"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:layout_marginBottom="150dp"/>
+
+
+        <EditText
+            android:id="@+id/etManageName"
+            android:layout_width="380dp"
+            android:layout_height="wrap_content"
+            android:hint=" Name"
+            android:inputType="textEmailAddress"
+            android:textSize="20dp"
+            android:padding="10dp"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/et_bg_shape"
+            android:drawableLeft="@drawable/icon_user"
+            android:drawableTint="#98AFC7"
+            />
+        <EditText
+            android:id="@+id/etManageMobileno"
+            android:layout_width="380dp"
+            android:layout_height="wrap_content"
+            android:hint=" Mobile No"
+            android:inputType="number"
+            android:textSize="20sp"
+            android:layout_marginTop="12dp"
+            android:padding="10dp"
+            android:background="@drawable/et_bg_shape"
+            android:drawableLeft="@drawable/icon_number"
+            android:drawableTint="#98AFC7"
+            />
+
+        <EditText
+            android:id="@+id/etManageEmail"
+            android:layout_width="380dp"
+            android:layout_height="wrap_content"
+            android:hint=" Email"
+            android:inputType="textEmailAddress"
+            android:textSize="20sp"
+            android:layout_marginTop="12dp"
+            android:padding="10dp"
+            android:background="@drawable/et_bg_shape"
+            android:drawableLeft="@drawable/icon_email"
+            android:drawableTint="#98AFC7"
+            android:clickable="false"
+            android:enabled="false"
+            />
+
+
+
+        <Button
+            android:id="@+id/btnManageManage"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:text="Update"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/dark_blue"
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="20dp" />
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -29,7 +29,7 @@ import cz.msebera.android.httpclient.Header;
 
 
 public class Profile_Fragment extends Fragment {
-    TextView tvProfileName , tvProfileEmail;
+    TextView tvProfileName , tvProfileEmail , tvProfileMobileno;
     ImageView ivProfileImage;
     CardView cvProfileHelp ,cvProfileTheme ,cvProfileAboutUs ,cvProfilePassword ,cvProfileManageProf;
 
@@ -46,6 +46,7 @@ public class Profile_Fragment extends Fragment {
         preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
         editor = preferences.edit();
 
+       tvProfileMobileno =view.findViewById(R.id.tvProfileMobileno);
        tvProfileName =view.findViewById(R.id.tvProfileName);
        tvProfileEmail =view.findViewById(R.id.tvProfileEmail);
        ivProfileImage =view.findViewById(R.id.ivProfileImage);
@@ -62,13 +63,7 @@ public class Profile_Fragment extends Fragment {
 
 
        //intent
-       cvProfileManageProf.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               Intent intent =new Intent(getContext(), Manager_Profile_Activity.class);
-               startActivity(intent);
-           }
-       });
+
 
        cvProfilePassword.setOnClickListener(new View.OnClickListener() {
            @Override
@@ -133,17 +128,31 @@ public class Profile_Fragment extends Fragment {
                                 String strPassword =jsonObject.getString("password");
 
 
-                                //display a  name and email
+                                //display a  name and email, mobile no
+                                tvProfileMobileno.setText(strMobileno);
                                 tvProfileName.setText(strName);
                                 tvProfileEmail.setText(strEmailid);
 
 
                                 //profile pic
                                 Glide.with(getContext())
-                                        .load("http://172.30.87.239:80/EduStayAPI/images/"+strimage)
+                                        .load("http://10.176.68.239:80/EduStayAPI/images/"+strimage)
                                         .skipMemoryCache(true)
                                         .error(R.drawable.image_not_found)
                                         .into(ivProfileImage);
+
+
+
+                                cvProfileManageProf.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        Intent intent =new Intent(getContext(), Manager_Profile_Activity.class);
+                                        intent.putExtra("name",tvProfileName.getText().toString());
+                                        intent.putExtra("mobileno",tvProfileMobileno.getText().toString());
+                                        intent.putExtra("emailid",tvProfileEmail.getText().toString());
+                                        startActivity(intent);
+                                    }
+                                });
 
 
 
