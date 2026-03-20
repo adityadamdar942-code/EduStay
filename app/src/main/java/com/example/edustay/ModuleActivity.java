@@ -1,6 +1,8 @@
 package com.example.edustay;
 
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.widget.Toast;
@@ -12,12 +14,13 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.edustay.Comman.NetworkChangeListner;
 import com.example.edustay.Hostel_module.Hostel_Home_Activity;
 import com.example.edustay.Library_module.Library_Home_Activity;
 
 public class ModuleActivity extends AppCompatActivity {
 
-
+    NetworkChangeListner networkChangeListner =new NetworkChangeListner();
     public boolean doubletap = false;
 
     @Override
@@ -60,5 +63,18 @@ public class ModuleActivity extends AppCompatActivity {
                 }
             }, 2000);
         }
+    }
+    @Override
+    protected void onStart() {
+        IntentFilter filter =new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(networkChangeListner,filter);
+        super.onStart();
+    }
+
+
+    @Override
+    protected void onStop() {
+        unregisterReceiver(networkChangeListner);
+        super.onStop();
     }
 }

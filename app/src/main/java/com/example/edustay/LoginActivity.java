@@ -2,7 +2,9 @@ package com.example.edustay;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.text.method.HideReturnsTransformationMethod;
@@ -17,6 +19,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.edustay.Comman.NetworkChangeListner;
 import com.example.edustay.Comman.Urls;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -38,6 +41,7 @@ public class LoginActivity extends AppCompatActivity {
 
     SharedPreferences preferences; //store temp data//database
     SharedPreferences.Editor editor;//put or edit data of SharedPrefernces
+    NetworkChangeListner networkChangeListner =new NetworkChangeListner();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -164,6 +168,19 @@ public class LoginActivity extends AppCompatActivity {
 
         );
 
+    }
+    @Override
+    protected void onStart() {
+        IntentFilter filter =new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(networkChangeListner,filter);
+        super.onStart();
+    }
+
+
+    @Override
+    protected void onStop() {
+        unregisterReceiver(networkChangeListner);
+        super.onStop();
     }
 
 }
