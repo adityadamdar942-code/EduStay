@@ -1,9 +1,11 @@
 package com.example.edustay.Comman;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
@@ -12,11 +14,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.edustay.LoginActivity;
 import com.example.edustay.R;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -31,10 +38,14 @@ import cz.msebera.android.httpclient.Header;
 public class Profile_Fragment extends Fragment {
     TextView tvProfileName , tvProfileEmail , tvProfileMobileno;
     ImageView ivProfileImage;
-    CardView cvProfileHelp ,cvProfileTheme ,cvProfileAboutUs ,cvProfilePassword ,cvProfileManageProf;
+    CardView cvProfileHelp  ,cvProfileAboutUs ,cvProfilePassword ,cvProfileManageProf , cvProfileLogout ,cvProfileDeleteAccount;
 
     SharedPreferences preferences;
     SharedPreferences.Editor editor ;
+
+    //Logout
+    GoogleSignInClient googleSignInClient;
+    GoogleSignInOptions googleSignInOptions;
 
 
     @Override
@@ -53,8 +64,10 @@ public class Profile_Fragment extends Fragment {
        cvProfileManageProf =view.findViewById(R.id.cvProfileManageProf);
        cvProfilePassword =view.findViewById(R.id.cvProfilePassword);
        cvProfileAboutUs =view.findViewById(R.id.cvProfileAboutUs);
-       cvProfileTheme =view.findViewById(R.id.cvProfileTheme);
        cvProfileHelp =view.findViewById(R.id.cvProfileHelp);
+       cvProfileLogout = view.findViewById(R.id.cvProfileLogout);
+       cvProfileDeleteAccount =view.findViewById(R.id.cvProfileDeleteAccount);
+
 
        getMyProfile();
 
@@ -79,20 +92,41 @@ public class Profile_Fragment extends Fragment {
                startActivity(intent);
            }
        });
-       cvProfileTheme.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               Intent intent =new Intent(getContext(), Theme_Activity.class);
-               startActivity(intent);
-           }
-       });
-       cvProfileHelp.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               Intent intent =new Intent(getContext(), Help_center_Activity.class);
-               startActivity(intent);
-           }
-       });
+
+        cvProfileLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                        .requestEmail()
+                        .build();
+
+                googleSignInClient = GoogleSignIn.getClient(getContext(), googleSignInOptions);
+
+                AlertDialog.Builder ad = new AlertDialog.Builder(getContext());
+                ad.setTitle("Logout");
+                ad.setMessage("Are you sure you want to logout?");
+
+                ad.setPositiveButton("No", (dialog, which) -> dialog.cancel());
+
+                ad.setNegativeButton("Yes", (dialog, which) -> {
+
+                    googleSignInClient.signOut();
+
+                    editor.putBoolean("islogin", false);
+                    editor.apply();
+
+                    Intent intent = new Intent(getContext(), LoginActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(intent);
+
+                    getActivity().finish();
+                });
+
+                ad.create().show();
+            }
+
+        });
 
 
 
@@ -136,7 +170,7 @@ public class Profile_Fragment extends Fragment {
 
                                 //profile pic
                                 Glide.with(getContext())
-                                        .load("http://10.176.68.239:80/EduStayAPI/images/"+strimage)
+                                        .load("http://10.106.184.239:80/EduStayAPI/images/"+strimage)
                                         .skipMemoryCache(true)
                                         .error(R.drawable.image_not_found)
                                         .into(ivProfileImage);
@@ -174,4 +208,6 @@ public class Profile_Fragment extends Fragment {
         );
 
     }
+
+
 }

@@ -1,4 +1,4 @@
-package com.example.edustay;
+package com.example.edustay.Comman;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +8,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.edustay.LoginActivity;
+import com.example.edustay.R;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -32,7 +35,7 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void run(){
                 //Classname objectname = new constructorname(FirstActivity.this,secondActivity.class);
-                Intent intent = new Intent(SplashActivity.this,LoginActivity.class);
+                Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
                 startActivity(intent);
                 finish();
             }
