@@ -92,6 +92,12 @@ public class Profile_Fragment extends Fragment {
                startActivity(intent);
            }
        });
+       cvProfileDeleteAccount.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               deleteAccount();
+           }
+       });
 
         cvProfileLogout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -131,6 +137,67 @@ public class Profile_Fragment extends Fragment {
 
 
        return view ;
+    }
+
+    private void deleteAccount() {
+
+        // client server communication
+
+
+        AsyncHttpClient client =new AsyncHttpClient();
+        RequestParams params = new RequestParams();
+
+        params.put("name",preferences.getString("name","" ));
+
+        client.post(Urls.urlDeleteAccount,params,new JsonHttpResponseHandler()
+                {
+
+                    // status code
+                    // 200 = Result ok
+                    // 404 =not found
+                    //500 = server issue
+
+                    @Override
+                    public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                        super.onSuccess(statusCode, headers, response);
+
+                        try {
+                            String status = response.getString("success");
+
+                            if (status.equals("1"))
+                            {
+                                Intent intent = new Intent(getContext(), LoginActivity.class);
+                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+
+                                editor.putBoolean("islogin", false);
+                                editor.apply();
+
+                                startActivity(intent);
+                            }else {
+
+                                Toast.makeText(getContext(), "Account Not Deleted ", Toast.LENGTH_SHORT).show();
+                            }
+
+
+                        } catch (JSONException e) {
+                            throw new RuntimeException(e);
+                        }
+
+                    }
+
+                    @Override
+                    public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                        super.onFailure(statusCode, headers, throwable, errorResponse);
+
+
+                        Toast.makeText(getContext(), "Server not found ", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+
+
+
+        );
     }
 
     private void getMyProfile() {

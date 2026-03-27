@@ -9,4 +9,6 @@ public class Urls {
     public static final String urlMyDetails ="http://10.106.184.239:80/EduStayAPI/getMyDetails.php";
 
     public static final String urlUpdateProfile ="http://10.106.184.239:80/EduStayAPI/updateMyProfile.php";
+
+    public static final String urlDeleteAccount = "http://10.106.184.239:80/EduStayAPI/deleteAccount.php";
 }
