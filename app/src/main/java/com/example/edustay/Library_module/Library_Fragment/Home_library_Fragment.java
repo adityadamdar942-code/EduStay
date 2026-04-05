@@ -1,4 +1,4 @@
-package com.example.edustay.Library_module.Library_Fragment;
+ package com.example.edustay.Library_module.Library_Fragment;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -58,10 +58,53 @@ public class Home_library_Fragment extends Fragment {
         getAllBooksAdapterClass = new GetAllBooksAdapterClass(getAllBooksPOJOClasses, requireActivity());
         lvBooks.setAdapter(getAllBooksAdapterClass);
 
+        svsearchBooks.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                searchBooks(query);
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                searchBooks(newText);
+                return true;
+            }
+        });
+
         loadImageSlider();
         getAllBooks();
 
         return view;
+    }
+
+    private void searchBooks(String query) {
+        List<GetAllBooksPOJOClass> tempSearchBook = new ArrayList<>();
+
+        if (query == null || query.trim().isEmpty()) {
+            tempSearchBook.addAll(getAllBooksPOJOClasses);
+        } else {
+            String searchText = query.toLowerCase().trim();
+
+            for (GetAllBooksPOJOClass obj : getAllBooksPOJOClasses) {
+                if (obj.getBookName().toLowerCase().contains(searchText)
+                        || obj.getBookAuthor().toLowerCase().contains(searchText)) {
+                    tempSearchBook.add(obj);
+                }
+            }
+        }
+
+        getAllBooksAdapterClass = new GetAllBooksAdapterClass(tempSearchBook, requireActivity());
+        lvBooks.setAdapter(getAllBooksAdapterClass);
+
+        if (tempSearchBook.isEmpty()) {
+            tvNoBooksAvailable.setVisibility(View.VISIBLE);
+            tvNoBooksAvailable.setText("No Books Found");
+            lvBooks.setVisibility(View.GONE);
+        } else {
+            tvNoBooksAvailable.setVisibility(View.GONE);
+            lvBooks.setVisibility(View.VISIBLE);
+        }
     }
 
     private void loadImageSlider() {
@@ -109,7 +152,9 @@ public class Home_library_Fragment extends Fragment {
                         );
                     }
 
-                    getAllBooksAdapterClass.notifyDataSetChanged();
+                    getAllBooksAdapterClass = new GetAllBooksAdapterClass(getAllBooksPOJOClasses, requireActivity());
+                    lvBooks.setAdapter(getAllBooksAdapterClass);
+
                     tvNoBooksAvailable.setVisibility(View.GONE);
                     lvBooks.setVisibility(View.VISIBLE);
 
@@ -137,3 +182,4 @@ public class Home_library_Fragment extends Fragment {
         });
     }
 }
+
