@@ -1,15 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/dark_blue"
+    android:orientation="vertical"
+    android:background="@color/light_light_blue"
     tools:context=".Library_module.Library_Fragment.Home_library_Fragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:text="Home"
+        android:textSize="22sp"
+        android:textStyle="bold" />
 
-</FrameLayout>
+    <com.denzcoskun.imageslider.ImageSlider
+        android:id="@+id/isHomeFragmentImageSlider"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="20dp"
+        app:iss_auto_cycle="true"
+        app:iss_delay="2000"
+        app:iss_period="2000"
+        app:iss_selected_dot="@drawable/default_selected_dot"
+        app:iss_text_align="CENTER"
+        app:iss_text_color="#000000"
+        app:iss_unselected_dot="@drawable/default_unselected_dot" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/et_bg_stroke2_blue"
+        android:orientation="horizontal"
+        android:weightSum="10">
+
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/et_library_homeFrg_SearchBooks"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="9"
+            android:iconifiedByDefault="false"
+            android:queryHint="Search here..."
+            app:queryHint="Search here..." />
+
+        <ImageView
+            android:id="@+id/ivHomeFragmentMic"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:src="@drawable/icon_mic" />
+    </LinearLayout>
+
+    <GridView
+        android:id="@+id/gvLibrary_homeFrag_Books"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:horizontalSpacing="8dp"
+        android:numColumns="2"
+        android:padding="8dp"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="8dp" />
+
+    <TextView
+        android:id="@+id/tv_library_homeFrg_BookNotAvailable"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="No Books Available"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:visibility="gone" />
+
+</LinearLayout>

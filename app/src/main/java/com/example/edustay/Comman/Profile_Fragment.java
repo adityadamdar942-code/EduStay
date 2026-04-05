@@ -237,7 +237,7 @@ public class Profile_Fragment extends Fragment {
 
                                 //profile pic
                                 Glide.with(getContext())
-                                        .load("http://10.106.184.239:80/EduStayAPI/images/"+strimage)
+                                        .load(Urls.urlProfilePic+strimage)
                                         .skipMemoryCache(true)
                                         .error(R.drawable.image_not_found)
                                         .into(ivProfileImage);
