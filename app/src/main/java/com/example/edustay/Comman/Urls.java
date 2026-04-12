@@ -16,4 +16,6 @@ public class Urls {
 
     public static final String urlGetAllBooks = "http://10.159.20.239:80/EduStayAPI/getAllBooks.php";
 
+    public static final String urlGetHostelStats = "http://10.159.20.239/EduStayAPI/getHostelStats.php";
+
 }

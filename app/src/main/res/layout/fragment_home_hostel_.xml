@@ -78,6 +78,7 @@
                         android:textSize="11sp"/>
 
                     <TextView
+                        android:id="@+id/tvRoomTotal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="100"
@@ -101,6 +102,7 @@
                         android:textSize="11sp"/>
 
                     <TextView
+                        android:id="@+id/tvRoomFull"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="85"
@@ -125,6 +127,7 @@
                         android:textSize="11sp"/>
 
                     <TextView
+                        android:id="@+id/tvRoomAvail"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="15"
@@ -182,6 +185,7 @@
                         android:textSize="11sp"/>
 
                     <TextView
+                        android:id="@+id/tvBedTotal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="300"
@@ -205,6 +209,7 @@
                         android:textColor="#F57C00"
                         android:textSize="11sp"/>
                     <TextView
+                        android:id="@+id/tvBedOccupied"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="240"
@@ -229,6 +234,7 @@
                         android:textSize="11sp"/>
 
                     <TextView
+                        android:id="@+id/tvBedVacant"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="60"
@@ -286,6 +292,7 @@
                         android:textSize="11sp"/>
 
                     <TextView
+                        android:id="@+id/tvStudentTotal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="50"
@@ -309,6 +316,7 @@
                         android:textSize="11sp"/>
 
                     <TextView
+                        android:id="@+id/tvStudentOngoing"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="32"
@@ -333,6 +341,7 @@
                         android:textSize="11sp"/>
 
                     <TextView
+                        android:id="@+id/tvStudentFree"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="18"
