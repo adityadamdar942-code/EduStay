@@ -1,4 +1,4 @@
- package com.example.edustay.Library_module.Library_Fragment;
+package com.example.edustay.Library_module.Library_Fragment;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -49,15 +49,15 @@ public class Home_library_Fragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_home_library_, container, false);
 
+        // Initialize UI Components
         imageSlider = view.findViewById(R.id.isHomeFragmentImageSlider);
         svsearchBooks = view.findViewById(R.id.et_library_homeFrg_SearchBooks);
         tvNoBooksAvailable = view.findViewById(R.id.tv_library_homeFrg_BookNotAvailable);
         lvBooks = view.findViewById(R.id.gvLibrary_homeFrag_Books);
 
         getAllBooksPOJOClasses = new ArrayList<>();
-        getAllBooksAdapterClass = new GetAllBooksAdapterClass(getAllBooksPOJOClasses, requireActivity());
-        lvBooks.setAdapter(getAllBooksAdapterClass);
 
+        // Search Logic
         svsearchBooks.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -85,7 +85,6 @@ public class Home_library_Fragment extends Fragment {
             tempSearchBook.addAll(getAllBooksPOJOClasses);
         } else {
             String searchText = query.toLowerCase().trim();
-
             for (GetAllBooksPOJOClass obj : getAllBooksPOJOClasses) {
                 if (obj.getBookName().toLowerCase().contains(searchText)
                         || obj.getBookAuthor().toLowerCase().contains(searchText)) {
@@ -94,12 +93,12 @@ public class Home_library_Fragment extends Fragment {
             }
         }
 
-        getAllBooksAdapterClass = new GetAllBooksAdapterClass(tempSearchBook, requireActivity());
+        // Update Adapter with filtered list
+        getAllBooksAdapterClass = new GetAllBooksAdapterClass(tempSearchBook, getActivity());
         lvBooks.setAdapter(getAllBooksAdapterClass);
 
         if (tempSearchBook.isEmpty()) {
             tvNoBooksAvailable.setVisibility(View.VISIBLE);
-            tvNoBooksAvailable.setText("No Books Found");
             lvBooks.setVisibility(View.GONE);
         } else {
             tvNoBooksAvailable.setVisibility(View.GONE);
@@ -109,77 +108,55 @@ public class Home_library_Fragment extends Fragment {
 
     private void loadImageSlider() {
         ArrayList<SlideModel> slideModels = new ArrayList<>();
-
         slideModels.add(new SlideModel(R.drawable.basicsof_civil_engineering_bookimage_slider, "Basics of Civil Engineering", ScaleTypes.FIT));
         slideModels.add(new SlideModel(R.drawable.data_engineering_bookimage_slider, "Data Engineering", ScaleTypes.FIT));
         slideModels.add(new SlideModel(R.drawable.software_engineering_image_slider, "Software Engineering", ScaleTypes.FIT));
-
         imageSlider.setImageList(slideModels, ScaleTypes.FIT);
     }
 
     private void getAllBooks() {
         AsyncHttpClient client = new AsyncHttpClient();
-        RequestParams params = new RequestParams();
 
-        client.put(Urls.urlGetAllBooks, params, new JsonHttpResponseHandler() {
+        // Use GET instead of PUT for fetching data usually
+        client.get(Urls.urlGetAllBooks, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                super.onSuccess(statusCode, headers, response);
-
                 try {
                     getAllBooksPOJOClasses.clear();
-
                     JSONArray jsonArray = response.getJSONArray("getAllBooks");
 
                     if (jsonArray.length() == 0) {
                         tvNoBooksAvailable.setVisibility(View.VISIBLE);
                         lvBooks.setVisibility(View.GONE);
-                        return;
+                    } else {
+                        for (int i = 0; i < jsonArray.length(); i++) {
+                            JSONObject jsonObject = jsonArray.getJSONObject(i);
+                            getAllBooksPOJOClasses.add(new GetAllBooksPOJOClass(
+                                    jsonObject.optString("id"),
+                                    jsonObject.optString("bookName"),
+                                    jsonObject.optString("bookAuthor"),
+                                    jsonObject.optString("bookImage").trim()
+                            ));
+                        }
+
+                        // Set adapter after data is loaded
+                        getAllBooksAdapterClass = new GetAllBooksAdapterClass(getAllBooksPOJOClasses, getActivity());
+                        lvBooks.setAdapter(getAllBooksAdapterClass);
+
+                        tvNoBooksAvailable.setVisibility(View.GONE);
+                        lvBooks.setVisibility(View.VISIBLE);
                     }
-
-                    for (int i = 0; i < jsonArray.length(); i++) {
-                        JSONObject jsonObject = jsonArray.getJSONObject(i);
-
-                        String strID = jsonObject.optString("id", "");
-                        String strbookName = jsonObject.optString("bookName", "");
-                        String strbookAuthor = jsonObject.optString("bookAuthor", "");
-                        String strbookImage = jsonObject.optString("bookImage", "").trim();
-
-                        Log.e("BOOK_JSON", "bookImage = " + strbookImage);
-
-                        getAllBooksPOJOClasses.add(
-                                new GetAllBooksPOJOClass(strID, strbookName, strbookAuthor, strbookImage)
-                        );
-                    }
-
-                    getAllBooksAdapterClass = new GetAllBooksAdapterClass(getAllBooksPOJOClasses, requireActivity());
-                    lvBooks.setAdapter(getAllBooksAdapterClass);
-
-                    tvNoBooksAvailable.setVisibility(View.GONE);
-                    lvBooks.setVisibility(View.VISIBLE);
-
                 } catch (JSONException e) {
-                    e.printStackTrace();
-                    if (isAdded() && getContext() != null) {
-                        Toast.makeText(getContext(), "Data parsing error", Toast.LENGTH_SHORT).show();
-                    }
+                    Log.e("JSON_ERR", e.getMessage());
                 }
             }
 
             @Override
             public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
-                super.onFailure(statusCode, headers, throwable, errorResponse);
-
-                tvNoBooksAvailable.setVisibility(View.VISIBLE);
-                lvBooks.setVisibility(View.GONE);
-
-                if (isAdded() && getContext() != null) {
-                    Toast.makeText(getContext(), "Server Error", Toast.LENGTH_SHORT).show();
+                if(getContext() != null) {
+                    Toast.makeText(getContext(), "Server Connectivity Issue", Toast.LENGTH_SHORT).show();
                 }
-
-                Log.e("BOOK_ERROR", "API failed", throwable);
             }
         });
     }
 }
-

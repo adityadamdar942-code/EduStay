@@ -79,7 +79,7 @@ public class GetAllBooksAdapterClass extends BaseAdapter {
         } else {
 
 
-            String imageUrl = "http://10.159.20.239/EduStay/images/" + imageName;
+            String imageUrl = "http://10.159.20.239/EduStayAPI/images/" + imageName;
             Log.e("BOOK_DEBUG", "imageUrl = " + imageUrl);
 
 
