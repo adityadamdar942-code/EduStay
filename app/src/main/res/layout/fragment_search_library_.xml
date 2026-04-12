@@ -8,15 +8,6 @@
     android:background="@color/light_light_blue"
     tools:context=".Library_module.Library_Fragment.Search_library_Fragment">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
-        android:text="search"
-        android:textSize="22sp"
-        android:textStyle="bold" />
 
     
     <LinearLayout
@@ -26,6 +17,7 @@
         android:layout_marginEnd="16dp"
         android:background="@drawable/et_bg_stroke2_blue"
         android:orientation="horizontal"
+        android:layout_marginTop="20dp"
         >
 
         <androidx.appcompat.widget.SearchView
@@ -35,7 +27,8 @@
             android:layout_weight="9"
             android:iconifiedByDefault="false"
             android:queryHint="Search here..."
-            app:queryHint="Search here..." />
+            app:queryHint="Search here..."
+            />
 
 
     </LinearLayout>

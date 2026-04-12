@@ -11,6 +11,13 @@
     android:fitsSystemWindows="true"
     android:weightSum="100">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
     <!-- Dynamic content here -->
     <FrameLayout
         android:id="@+id/Library_home_framelayout"

@@ -10,6 +10,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:text="Mobile No"
+
         />
 
 
@@ -26,16 +27,6 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="16dp">
-
-            <!-- Title -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Profile"
-                android:textSize="22sp"
-                android:textStyle="bold"
-                android:layout_gravity="center"
-                android:layout_marginBottom="16dp"/>
 
             <!-- Profile Card -->
             <androidx.cardview.widget.CardView

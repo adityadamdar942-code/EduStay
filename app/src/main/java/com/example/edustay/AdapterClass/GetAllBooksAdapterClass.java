@@ -43,10 +43,12 @@ public class GetAllBooksAdapterClass extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+
         ViewHolder holder;
 
         if (convertView == null) {
-            convertView = LayoutInflater.from(activity).inflate(R.layout.custom_book_list, parent, false);
+            convertView = LayoutInflater.from(activity)
+                    .inflate(R.layout.custom_book_list, parent, false);
 
             holder = new ViewHolder();
             holder.ivBookImage = convertView.findViewById(R.id.ivBookImage);
@@ -58,30 +60,39 @@ public class GetAllBooksAdapterClass extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
 
+
         GetAllBooksPOJOClass obj = getAllBooksPOJOClasses.get(position);
+
 
         holder.tvBookName.setText(obj.getBookName());
         holder.tvAuthorName.setText(obj.getBookAuthor());
+
 
         String imageName = obj.getBookImage() == null ? "" : obj.getBookImage().trim();
         Log.e("BOOK_DEBUG", "imageName = " + imageName);
 
         if (TextUtils.isEmpty(imageName)) {
+
+
             holder.ivBookImage.setImageResource(R.drawable.image_not_found);
+
         } else {
+
+
             String imageUrl = "http://10.159.20.239/EduStay/images/" + imageName;
             Log.e("BOOK_DEBUG", "imageUrl = " + imageUrl);
+
 
             Glide.with(activity)
                     .load(imageUrl)
                     .placeholder(R.drawable.image_not_found)
                     .error(R.drawable.image_not_found)
-                    .fallback(R.drawable.image_not_found)
                     .into(holder.ivBookImage);
         }
 
         return convertView;
     }
+
 
     static class ViewHolder {
         ImageView ivBookImage;
