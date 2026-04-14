@@ -76,12 +76,23 @@
         android:drawableTint="#98AFC7"
         />
 
+
+    <TextView
+        android:id="@+id/tvLoginforgetPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Forget Password"
+        android:textSize="15sp"
+        android:layout_marginTop="12dp"
+        android:layout_marginLeft="120dp"
+        android:backgroundTint="@color/dark_blue"
+        />
+
     <!-- Login Button -->
     <CheckBox
         android:id="@+id/cbLoginShowHidePassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="1sp"
         android:layout_marginTop="5dp"
         android:text="Show Password"
         android:textColor="#610A0A" />

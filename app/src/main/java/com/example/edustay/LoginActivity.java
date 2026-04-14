@@ -33,10 +33,10 @@ import cz.msebera.android.httpclient.Header;
 public class LoginActivity extends AppCompatActivity {
 
 
-    EditText etLoginUsername,etLoginPassword;
+    EditText etLoginUsername,etLoginPassword  ;
     CheckBox cbLoginShowHidePassword;
     Button btnLoginLogo;
-    TextView tvLoginNewUser;
+    TextView tvLoginNewUser , tvLoginForgetPassword;
     ProgressDialog progressDialog;
 
     SharedPreferences preferences; //store temp data//database
@@ -56,6 +56,7 @@ public class LoginActivity extends AppCompatActivity {
         }
         etLoginUsername = findViewById(R.id.etLoginUserName);
         etLoginPassword = findViewById(R.id.etLoginPassword);
+        tvLoginForgetPassword =findViewById(R.id.tvLoginforgetPassword);
         cbLoginShowHidePassword = findViewById(R.id.cbLoginShowHidePassword);
         btnLoginLogo = findViewById(R.id.btnLoginLogin);
         tvLoginNewUser = findViewById(R.id.tvLoginNewUser);
@@ -102,6 +103,15 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
+
+        tvLoginForgetPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this,ForgetPasswordActivity.class);
+                startActivity(intent);
+            }
+        });
+
         tvLoginNewUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

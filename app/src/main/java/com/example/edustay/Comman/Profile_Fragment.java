@@ -19,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.edustay.ForgetPasswordActivity;
 import com.example.edustay.LoginActivity;
 import com.example.edustay.R;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -81,7 +82,7 @@ public class Profile_Fragment extends Fragment {
        cvProfilePassword.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
-               Intent intent =new Intent(getContext(), Password_Security_Activity.class);
+               Intent intent =new Intent(getContext(), ForgetPasswordActivity.class);
                startActivity(intent);
            }
        });
