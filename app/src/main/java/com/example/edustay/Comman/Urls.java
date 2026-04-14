@@ -22,4 +22,8 @@ public class Urls {
 
     public static final String urlMyBookPic = "http://10.137.189.239:80/EduStayAPI/images/";
 
+    public static final String urlGetRoomInfo ="http://10.137.189.239:80/EduStayAPI/getRoomInfo.php?id=";
+
+
+
 }

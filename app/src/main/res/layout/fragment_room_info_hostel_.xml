@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_light_blue"
+    android:background="#E8EAF6"
     android:fillViewport="true">
 
     <LinearLayout
@@ -16,7 +17,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Available Beds View"
-            android:textColor="@color/text_main"
+            android:textColor="#1A237E"
             android:textSize="22sp"
             android:textStyle="bold" />
 
@@ -27,57 +28,28 @@
             android:textColor="#5C6BC0"
             android:layout_marginBottom="20dp" />
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvRoomInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:nestedScrollingEnabled="false"
+            tools:listitem="@layout/item_room_card" />
+
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
+            android:layout_marginTop="16dp"
             app:cardCornerRadius="12dp"
-            app:cardElevation="4dp"
-            app:strokeWidth="0dp">
+            app:cardElevation="2dp">
 
-            <LinearLayout
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/header_partial"
-                    android:padding="12dp">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Room No: 101"
-                        android:textColor="@android:color/white"
-                        android:textStyle="bold" />
-                </RelativeLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="12dp">
-                    <include
-                        layout="@layout/named_item_bed_row"
-                        android:id="@+id/room1_bed1" />
-                    <include
-                        layout="@layout/named_item_bed_row"
-                        android:id="@+id/room1_bed2" />
-                    <include
-                        layout="@layout/named_item_bed_row"
-                        android:id="@+id/room1_bed3" />
-                </LinearLayout>
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
-
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            app:cardCornerRadius="12dp"
-            app:cardElevation="4dp">
-
+                android:padding="12dp"
+                android:text="Note: Only admins can assign beds."
+                android:textAlignment="center"
+                android:textColor="#757575"
+                android:textSize="12sp" />
         </com.google.android.material.card.MaterialCardView>
 
     </LinearLayout>
