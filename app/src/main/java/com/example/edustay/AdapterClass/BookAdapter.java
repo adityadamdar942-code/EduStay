@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.edustay.Comman.Urls;
 import com.example.edustay.Model.Book;
 import com.example.edustay.R;
 
@@ -39,7 +40,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
         holder.t2.setText(book.getAuthor());
 
 
-        String url = "http://10.159.20.239:80/EduStayAPI/images/" + book.getImage();
+        String url = Urls.urlMyBookPic + book.getImage();
         Glide.with(context).load(url).into(holder.img);
     }
 

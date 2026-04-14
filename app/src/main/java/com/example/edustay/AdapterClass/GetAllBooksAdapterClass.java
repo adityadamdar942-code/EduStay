@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.edustay.Comman.Urls;
 import com.example.edustay.POJOClass.GetAllBooksPOJOClass;
 import com.example.edustay.R;
 
@@ -79,7 +80,7 @@ public class GetAllBooksAdapterClass extends BaseAdapter {
         } else {
 
 
-            String imageUrl = "http://10.159.20.239/EduStayAPI/images/" + imageName;
+            String imageUrl = Urls.urlMyBookPic + imageName;
             Log.e("BOOK_DEBUG", "imageUrl = " + imageUrl);
 
 

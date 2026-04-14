@@ -19,6 +19,7 @@ import com.android.volley.Request;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.edustay.AdapterClass.BookAdapter;
+import com.example.edustay.Comman.Urls;
 import com.example.edustay.Model.Book;
 import com.example.edustay.R;
 
@@ -58,7 +59,7 @@ public class MyBooks_library_Fragment extends Fragment {
     }
 
     private void fetchBooks(String name) {
-        String url = "http://10.159.20.239/EduStayAPI/getMyBooks.php?name=" + name.replace(" ", "%20");
+        String url = Urls.urlGetMyBookName + name.replace(" ", "%20");
 
         StringRequest request = new StringRequest(Request.Method.GET, url, response -> {
             try {
