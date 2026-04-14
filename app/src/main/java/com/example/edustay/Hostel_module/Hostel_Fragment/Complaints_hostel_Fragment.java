@@ -39,28 +39,28 @@ public class Complaints_hostel_Fragment extends Fragment  {
             @Override
             public void onClick(View v) {
 
-                String subject = etEmailSubject.getText().toString();
-                String message = etEmailMessage.getText().toString();
-
-                // Common email (fixed)
+                String subject = etEmailSubject.getText().toString().trim();
+                String message = etEmailMessage.getText().toString().trim();
                 String recipientEmail = "adityadamdar942@gmail.com";
 
+                if (subject.isEmpty() || message.isEmpty()) {
+                    Toast.makeText(getContext(), "Enter a Subject Message ", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+
+                String mailTo = "mailto:" + recipientEmail +
+                        "?subject=" + Uri.encode(subject) +
+                        "&body=" + Uri.encode(message);
+
                 Intent intent = new Intent(Intent.ACTION_SENDTO);
-                intent.setData(Uri.parse("mailto:" + recipientEmail));
-                intent.putExtra(Intent.EXTRA_SUBJECT, subject);
-                intent.putExtra(Intent.EXTRA_TEXT, message);
+                intent.setData(Uri.parse(mailTo));
 
                 try {
-                    startActivity(Intent.createChooser(
-                            intent,
-                            "Choose Email App"
-                    ));
+
+                    startActivity(intent);
                 } catch (ActivityNotFoundException e) {
-                    Toast.makeText(
-                            getContext(),
-                            "No Email App Installed",
-                            Toast.LENGTH_SHORT
-                    ).show();
+                    Toast.makeText(getContext(), "Email app not found", Toast.LENGTH_SHORT).show();
                 }
             }
         });

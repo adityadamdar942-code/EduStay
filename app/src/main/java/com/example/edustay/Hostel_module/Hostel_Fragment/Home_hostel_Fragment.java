@@ -62,11 +62,11 @@ public class Home_hostel_Fragment extends Fragment {
                         JSONObject jsonObject = new JSONObject(response);
 
                         // Set Room Stats
-                        if (jsonObject.has("Rooms")) {
-                            JSONObject rooms = jsonObject.getJSONObject("Rooms");
-                            tvRoomTotal.setText(rooms.getString("total"));
-                            tvRoomFull.setText(rooms.getString("occupied"));
-                            tvRoomAvail.setText(rooms.getString("available"));
+                        if (jsonObject.has("Room")) {
+                            JSONObject room = jsonObject.getJSONObject("Room");
+                            tvRoomTotal.setText(room.getString("total"));
+                            tvRoomFull.setText(room.getString("occupied"));
+                            tvRoomAvail.setText(room.getString("available"));
                         }
 
                         // Set Bed Stats

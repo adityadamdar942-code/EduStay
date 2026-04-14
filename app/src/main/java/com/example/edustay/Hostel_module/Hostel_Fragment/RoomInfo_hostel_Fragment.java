@@ -50,7 +50,7 @@ import java.util.List;
         SharedPreferences sp = getActivity().getSharedPreferences("UserPrefs", Context.MODE_PRIVATE);
         String studentId = sp.getString("id", "");
 
-        // Make sure your Urls.urlGetRoomInfo ends with a '=' or handles the param correctly
+
         String url = Urls.urlGetRoomInfo + studentId;
 
         StringRequest request = new StringRequest(Request.Method.GET, url, response -> {
