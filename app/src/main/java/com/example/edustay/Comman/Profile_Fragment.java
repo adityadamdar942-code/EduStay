@@ -92,6 +92,12 @@ public class Profile_Fragment extends Fragment {
                Intent intent =new Intent(getContext(), About_Us_Activity.class);
                startActivity(intent);
            }
+       });cvProfileHelp.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               Intent intent =new Intent(getContext(), Help_center_Activity.class);
+               startActivity(intent);
+           }
        });
        cvProfileDeleteAccount.setOnClickListener(new View.OnClickListener() {
            @Override
